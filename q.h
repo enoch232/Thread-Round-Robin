@@ -18,19 +18,21 @@ void AddQueue(TCB_t ** header, TCB_t * item)
 	// pointers of the item and given header
 	// write your code here
   // TCB_t* node = (TCB_t*)malloc(sizeof(TCB_t));
-  // if (*header == NULL){
-  //   printf("Header is Null\n");
-  //
-  //   *header = item;
-  //   item->next = item;
-  //   item->prev = item;
-  // }else{
-  //   printf("Header is not Null\n");
-  //   item->prev = (*header)->prev;
-  //   item->next = (*header);
-  //   (*header)->prev->next = item;
-  //   (*header)->prev = item;
-  // }
+  if (*header == NULL){
+    printf("Header is Null\n");
+
+    *header = item;
+    item->next = item;
+    item->prev = item;
+    printf("item: %d\n", item->number);
+  }else{
+    printf("Header is not Null\n");
+    item->prev = (*header)->prev;
+    item->next = (*header);
+    (*header)->prev->next = item;
+    (*header)->prev = item;
+    printf("item: %d\n", item->number);
+  }
 }
 
 // Moves the header pointer to the next element in the queue.
