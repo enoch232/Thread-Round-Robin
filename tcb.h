@@ -1,4 +1,4 @@
-#include <ucontext.h>
+#include "ucontext.h"
 
 //TCB structure
 typedef struct TCB_t {
@@ -10,13 +10,12 @@ typedef struct TCB_t {
 
 void init_TCB (TCB_t *tcb, void *function, void *stackP, int stack_size)
 {
-    memset(tcb, '\0', sizeof(TCB_t));       
+    memset(tcb, '\0', sizeof(TCB_t));
     // you have to get parent context with getcontext()
-    // write your code here	    
+    // write your code here
     tcb->context.uc_stack.ss_sp = stackP;
     tcb->context.uc_stack.ss_size = (size_t) stack_size;
     // need to cook the context with makecontext()
     // write your code here
+    makecontext(&tcb, (void*)&function, 0);
 }
-
-

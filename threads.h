@@ -1,5 +1,5 @@
 //include header file to support queuing functions
-#include <q.h>
+#include "q.h"
 extern TCB_t * execution_q;
 
 void create_thread(void (*function)(void *))

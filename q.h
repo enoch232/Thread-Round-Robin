@@ -1,9 +1,10 @@
 //include header file for TCB
-#include <tcb.h>
+#include "tcb.h"
 //creates an empty queue, pointed to by the variable head.
 void InitQueue(TCB_t** header)
 {
 	// write your code here
+  header = (TCB_t*)malloc(sizeof(TCB_t))
 }
 
 //adds an element at the end of the queue
