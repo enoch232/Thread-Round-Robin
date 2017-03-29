@@ -5,7 +5,6 @@ void InitQueue(TCB_t** header)
 {
 	// write your code here
   *header = NULL;
-  printf("Header set null\n");
   // header = (TCB_t**)malloc(sizeof(TCB_t));
   // (*header)->next = NULL;
   // (*header)->prev = NULL;
@@ -19,24 +18,21 @@ void AddQueue(TCB_t ** header, TCB_t * item)
 	// write your code here
   // TCB_t* node = (TCB_t*)malloc(sizeof(TCB_t));
   if (*header == NULL){
-    printf("Header is Null\n");
-
     *header = item;
     item->next = item;
     item->prev = item;
-    printf("item: %d\n", item->number);
   }else{
-    printf("Header is not Null\n");
     item->prev = (*header)->prev;
     item->next = (*header);
     (*header)->prev->next = item;
     (*header)->prev = item;
-    printf("item: %d\n", item->number);
   }
 }
 
 // Moves the header pointer to the next element in the queue.
 void RotateQueue(TCB_t **header)
 {
+  *header = (*header)->next;
+
 	// write your code here
 }
