@@ -8,8 +8,16 @@ void create_thread(void (*function)(void *))
 	TCB_t * tcb;
 	// write your code below
 	//allocate a stack (via malloc) of a certain size (choose 8192)
+	stackp = malloc(8192);
 	//allocate a TCB (via malloc)
+	tcb = malloc(sizeof(tcb));
 	//call init_TCB with appropriate arguments (stack size 8192)
+	init_TCB(tcb,(void*)&function, stackp, 8192);
+	tcb->number = 5;
+	AddQueue(&execution_q, tcb);
+	tcb->number = 6;
+	AddQueue(&execution_q, tcb);
+	// printf("%d -> %d", execution_q->number, execution_q->next->number);
 	//call AddQueue to add this TCB into the execution queue which is a global header pointer
 }
 

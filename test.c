@@ -32,12 +32,19 @@ void function3()
     // write your code below
 }
 
-void main()
+int main()
 {
 
+
     // Initialize execution queue
+		InitQueue(&execution_q);
+
 
     // Create threads to run on functions 1, 2 and 3
+		create_thread((void*)&function1);
+		// create_thread((void*)&function2);
+		// create_thread((void*)&function3);
 
     // run the execution queue
+		return 0;
 }
