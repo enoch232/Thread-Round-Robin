@@ -5,7 +5,6 @@ typedef struct TCB_t {
      struct TCB_t     *next;
      struct TCB_t     *prev;
      ucontext_t      context;
-     int number;
 } TCB_t;
 
 
@@ -19,7 +18,6 @@ void init_TCB (TCB_t *tcb, void *function, void *stackP, int stack_size)
     tcb->context.uc_stack.ss_size = (size_t) stack_size;
     // need to cook the context with makecontext()
     // write your code here
-    printf("context building\n");
-    makecontext(&tcb->context,(void*)&function, 0);
-    printf("context built\n");
+    //context building
+    makecontext(&tcb->context,function, 0);
 }
