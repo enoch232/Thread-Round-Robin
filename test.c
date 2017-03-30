@@ -26,8 +26,8 @@ void function1()          //First thread will run on this function
 void function2()
 {
     // write your code below
-		int i=0;
-		for(i=0;i<4;i++)
+		int j=0;
+		for(j=0;j<4;j++)
 		{
 			printf("Task 2 is running\n");
 			sleep(2);    //Delay of 2 sec
@@ -41,8 +41,8 @@ void function2()
 void function3()
 {
     // write your code below
-		int i=0;
-		for(i=0;i<4;i++)
+		int k=0;
+		for(k=0;k<4;k++)
 		{
 			printf("Task 3 is running\n");
 			sleep(2);    //Delay of 2 sec
@@ -60,13 +60,10 @@ void main()
     // Initialize execution queue
 		InitQueue(&execution_q);
 
-
     // Create threads to run on functions 1, 2 and 3
 		create_thread((void*)&function1);
 		create_thread((void*)&function2);
-		// create_thread((void*)&function3);
-		// create_thread((void*)&function1);
-		// RotateQueue(&execution_q);
+		create_thread((void*)&function3);
 		run();
 		printf("%d -> %d -> %d -> %d -> %d", execution_q->number, execution_q->next->number, execution_q->next->next->number, execution_q->next->next->next->number,  execution_q->next->next->next->next->number);
 		// create_thread((void*)&function2);

@@ -5,9 +5,6 @@ void InitQueue(TCB_t** header)
 {
 	// write your code here
   *header = NULL;
-  // header = (TCB_t**)malloc(sizeof(TCB_t));
-  // (*header)->next = NULL;
-  // (*header)->prev = NULL;
 }
 
 //adds an element at the end of the queue
@@ -16,12 +13,15 @@ void AddQueue(TCB_t ** header, TCB_t * item)
 	// you need to deal with prev and next
 	// pointers of the item and given header
 	// write your code here
+  printf("add\n");
   // TCB_t* node = (TCB_t*)malloc(sizeof(TCB_t));
-  if (*header == NULL){
+  if ((*header) == NULL){
+    printf("it's NULL\n");
     *header = item;
     item->next = item;
     item->prev = item;
   }else{
+    printf("it's not NULL\n");
     item->prev = (*header)->prev;
     item->next = (*header);
     (*header)->prev->next = item;
