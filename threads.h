@@ -16,24 +16,9 @@ void create_thread(void (*function)(void *))
 	tcb = (TCB_t*)malloc(sizeof(TCB_t));
 	//call init_TCB with appropriate arguments (stack size 8192)
 	init_TCB(tcb,(void*)&function, stackp, 8192);
-	tcb->number = 3;
+	tcb->number = &tcb;
 	AddQueue(&execution_q, tcb);
-	//
-	//
-	stackp2 = malloc(8192);
-	TCB_t* tcb2 = (TCB_t*)malloc(sizeof(TCB_t));
-	init_TCB(tcb2,(void*)&function, stackp2, 8192);
 
-	tcb2->number = 5;
-	AddQueue(&execution_q, tcb2);
-
-
-	//
-	TCB_t* tcb3 = (TCB_t*)malloc(sizeof(TCB_t));
-	//call init_TCB with appropriate arguments (stack size 8192)
-	init_TCB(tcb3,(void*)&function, stackp, 8192);
-	tcb3->number = 8;
-	AddQueue(&execution_q, tcb3);
 
 	//call AddQueue to add this TCB into the execution queue which is a global header pointer
 }
@@ -44,10 +29,13 @@ void run()
     getcontext(&parent);
     // write your code below
     // use swapcontext() to start executing first thread element in execution queue
+		swapcontext(&parent, &execution_q->context);
 }
 
 void yield()
 {
 	//rotate the execution queue
+	RotateQueue(&execution_q);
 	//swap the context, from previous thread element to the thread pointed to by execution queue
+	swapcontext(&execution_q->prev->context, &execution_q->context);
 }

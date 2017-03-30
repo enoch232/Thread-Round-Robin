@@ -18,6 +18,7 @@ void function1()          //First thread will run on this function
 		sleep(2);    //Delay of 2 sec
 		// write your code below
 		//yield to pause currently executing thread temporarily & allow other threads to execute
+		yield();
 
 	}
 }
@@ -25,14 +26,34 @@ void function1()          //First thread will run on this function
 void function2()
 {
     // write your code below
+		int i=0;
+		for(i=0;i<4;i++)
+		{
+			printf("Task 2 is running\n");
+			sleep(2);    //Delay of 2 sec
+			// write your code below
+			//yield to pause currently executing thread temporarily & allow other threads to execute
+			yield();
+
+		}
 }
 
 void function3()
 {
     // write your code below
+		int i=0;
+		for(i=0;i<4;i++)
+		{
+			printf("Task 3 is running\n");
+			sleep(2);    //Delay of 2 sec
+			// write your code below
+			//yield to pause currently executing thread temporarily & allow other threads to execute
+			yield();
+
+		}
 }
 
-int main()
+void main()
 {
 
 
@@ -42,12 +63,15 @@ int main()
 
     // Create threads to run on functions 1, 2 and 3
 		create_thread((void*)&function1);
+		create_thread((void*)&function2);
+		// create_thread((void*)&function3);
 		// create_thread((void*)&function1);
-		RotateQueue(&execution_q);
+		// RotateQueue(&execution_q);
+		run();
 		printf("%d -> %d -> %d -> %d -> %d", execution_q->number, execution_q->next->number, execution_q->next->next->number, execution_q->next->next->next->number,  execution_q->next->next->next->next->number);
 		// create_thread((void*)&function2);
 		// create_thread((void*)&function3);
 
     // run the execution queue
-		return 0;
+		// return 0;
 }
