@@ -62,10 +62,10 @@ void main()
 
     // Create threads to run on functions 1, 2 and 3
 		create_thread((void*)&function1);
-		create_thread((void*)&function2);
-		create_thread((void*)&function3);
+		// create_thread((void*)&function2);
+		// create_thread((void*)&function3);
 		run();
-		printf("%d -> %d -> %d -> %d -> %d", execution_q->number, execution_q->next->number, execution_q->next->next->number, execution_q->next->next->next->number,  execution_q->next->next->next->next->number);
+		// printf("%d -> %d -> %d -> %d -> %d", execution_q->number, execution_q->next->number, execution_q->next->next->number, execution_q->next->next->next->number,  execution_q->next->next->next->next->number);
 		// create_thread((void*)&function2);
 		// create_thread((void*)&function3);
 

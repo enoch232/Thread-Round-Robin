@@ -15,7 +15,7 @@ void create_thread(void (*function)(void *))
 
 	tcb = (TCB_t*)malloc(sizeof(TCB_t));
 	//call init_TCB with appropriate arguments (stack size 8192)
-	init_TCB(tcb,(void*)&function, stackp, 8192);
+	init_TCB(tcb,function, stackp, 8192);
 	tcb->number = tcb;
 	printf("new one: %x\n", tcb);
 	//call AddQueue to add this TCB into the execution queue which is a global header pointer
@@ -29,7 +29,9 @@ void run()
     getcontext(&parent);
     // write your code below
     // use swapcontext() to start executing first thread element in execution queue
-		swapcontext(&parent, &execution_q->context);
+		printf("changing..1\n");
+		swapcontext( &parent, &execution_q->context);
+		printf("changing back..2\n");
 }
 
 void yield()
