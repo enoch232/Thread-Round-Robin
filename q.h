@@ -5,6 +5,7 @@ void InitQueue(TCB_t** header)
 {
 	// write your code here
   *header = NULL;
+
 }
 
 //adds an element at the end of the queue

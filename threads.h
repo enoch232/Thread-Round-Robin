@@ -37,5 +37,7 @@ void yield()
 	//rotate the execution queue
 	RotateQueue(&execution_q);
 	//swap the context, from previous thread element to the thread pointed to by execution queue
+	printf("changing..\n");
 	swapcontext(&execution_q->prev->context, &execution_q->context);
+	printf("changing back..\n");
 }

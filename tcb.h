@@ -20,4 +20,5 @@ void init_TCB (TCB_t *tcb, void *function, void *stackP, int stack_size)
     // need to cook the context with makecontext()
     // write your code here
     makecontext(&tcb->context, (void*)&function, 0);
+    printf("context built\n");
 }
